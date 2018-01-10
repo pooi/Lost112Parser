@@ -80,7 +80,7 @@ try:
     dataList = []
     for page in range(start, finish+1):
 
-        if count >= 50:
+        if count >= 30:
             print("Reopen Chrome")
             count = 0
             driver.close()
