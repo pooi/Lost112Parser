@@ -73,7 +73,7 @@ col = 0
 try:
 
     dataList = []
-    for page in range(start, finish):
+    for page in range(start, finish+1):
 
         print("Page %d/%d" % (page, finish))
 
