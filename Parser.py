@@ -44,7 +44,7 @@ def getDetailInfo(driver, js):
         if title == '물품분류':
             category = detail.find('p', {"class": "find02"}).text
             driver.back()
-            time.sleep(2)
+            # time.sleep(2)
             return category
 
 start = 1
@@ -78,7 +78,7 @@ try:
         print("Page %d/%d" % (page, finish))
 
         driver.execute_script('fn_find_link_page(%d);' % page)
-        time.sleep(2)
+        # time.sleep(2)
         checkAlert(driver)
 
         html = driver.page_source
