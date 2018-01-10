@@ -31,7 +31,7 @@ def checkAlert(driver):
 
 def getDetailInfo(driver, js):
     driver.execute_script(js)
-    time.sleep(2)
+    # time.sleep(2)
     checkAlert(driver)
 
     html = driver.page_source
