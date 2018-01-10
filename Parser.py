@@ -11,7 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from fake_useragent import UserAgent
+# from fake_useragent import UserAgent
 import xlsxwriter
 import time
 import os, sys
@@ -53,7 +53,7 @@ finish = 10
 start = int(input("Start Page : "))
 finish = int(input("Finish Page : "))
 
-ua = UserAgent()
+# ua = UserAgent()
 dir = os.getcwd() + '/chromedriver'
 print(dir)
 driver = webdriver.Chrome(dir)
