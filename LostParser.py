@@ -106,7 +106,8 @@ try:
             js = lost.find('a')['href']
             category = getDetailInfo(driver, js)
             js = str(js)
-            itemId = js[js.index("(\'")+2:js.index("\',")]
+            # js = js.replace('\\\'', '')
+            itemId = js[js.index("L"):js.index("L")+17]
             # dataList.append(data)
             category = str(category)
             categories = category.split('>')
