@@ -68,7 +68,7 @@ driver.get('https://www.lost112.go.kr/find/findList.do')
 # jsList = []
 # categories = []
 
-workbook = xlsxwriter.Workbook('lost(%d-%d).xlsx' % (start, finish))
+workbook = xlsxwriter.Workbook('findList(%d-%d).xlsx' % (start, finish))
 worksheet = workbook.add_worksheet()
 
 row = 0
