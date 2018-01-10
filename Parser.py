@@ -30,22 +30,26 @@ def checkAlert(driver):
         # print("no alert")
 
 def getDetailInfo(driver, js):
-    driver.execute_script(js)
-    # time.sleep(2)
-    checkAlert(driver)
+    try:
+        driver.execute_script(js)
+        # time.sleep(2)
+        checkAlert(driver)
 
-    html = driver.page_source
-    soup = BeautifulSoup(html)
-    finds = soup.find("div", {"class": "find_info"})
-    details = finds.find_all("li")
+        html = driver.page_source
+        soup = BeautifulSoup(html)
+        finds = soup.find("div", {"class": "find_info"})
+        details = finds.find_all("li")
 
-    for detail in details:
-        title = detail.find('p', {"class": "find01"}).text
-        if title == '물품분류':
-            category = detail.find('p', {"class": "find02"}).text
-            driver.back()
-            # time.sleep(2)
-            return category
+        for detail in details:
+            title = detail.find('p', {"class": "find01"}).text
+            if title == '물품분류':
+                category = detail.find('p', {"class": "find02"}).text
+                driver.back()
+                # time.sleep(2)
+                return category
+        return "None > None"
+    except:
+        return "None > None"
 
 start = 1
 finish = 10
