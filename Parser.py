@@ -73,11 +73,20 @@ worksheet = workbook.add_worksheet()
 
 row = 0
 col = 0
+count = 0
 
 try:
 
     dataList = []
     for page in range(start, finish+1):
+
+        if count >= 50:
+            print("Reopen Chrome")
+            count = 0
+            driver.close()
+            driver = webdriver.Chrome(dir)
+            driver.get('https://www.lost112.go.kr/find/findList.do')
+        count += 1
 
         print("Page %d/%d" % (page, finish))
 
