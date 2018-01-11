@@ -54,9 +54,6 @@ def getDetailInfo(driver, js):
 start = 1
 finish = 10
 
-start = int(input("Start Page : "))
-finish = int(input("Finish Page : "))
-
 # ua = UserAgent()
 dir = os.getcwd() + '/chromedriver'
 print(dir)
@@ -65,8 +62,15 @@ driver = webdriver.Chrome(dir)
 # driver = webdriver.Chrome()
 driver.get('https://www.lost112.go.kr/find/findList.do')
 
+driver.execute_script("document.getElementById('startYmdInput').value = '20171001';")
+searchBtn = driver.find_element_by_id('searchMain')
+searchBtn.submit()
+
 # jsList = []
 # categories = []
+
+start = int(input("Start Page : "))
+finish = int(input("Finish Page : "))
 
 workbook = xlsxwriter.Workbook('findList(%d-%d).xlsx' % (start, finish))
 worksheet = workbook.add_worksheet()
