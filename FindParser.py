@@ -51,20 +51,45 @@ def getDetailInfo(driver, js):
     except:
         return "None > None"
 
+def driverInit(driver):
+    try:
+        if driver is None:
+            pass
+        else:
+            driver.close()
+    except:
+        pass
+    finally:
+        dir = os.getcwd() + '/chromedriver'
+        driver = webdriver.Chrome(dir)
+
+    driver.set_window_size(100, 100)
+    driver.set_window_position(50, 50)
+    driver.get('https://www.lost112.go.kr/find/findList.do')
+
+    driver.execute_script("document.getElementById('startYmdInput').value = '20171001';")
+    searchBtn = driver.find_element_by_id('searchMain')
+    searchBtn.submit()
+
+    return driver
+
+
 start = 1
 finish = 10
 
 # ua = UserAgent()
-dir = os.getcwd() + '/chromedriver'
-print(dir)
-driver = webdriver.Chrome(dir)
+# dir = os.getcwd() + '/chromedriver'
+# print(dir)
+# driver = webdriver.Chrome(dir)
 
 # driver = webdriver.Chrome()
-driver.get('https://www.lost112.go.kr/find/findList.do')
+# driver.get('https://www.lost112.go.kr/find/findList.do')
 
-driver.execute_script("document.getElementById('startYmdInput').value = '20171001';")
-searchBtn = driver.find_element_by_id('searchMain')
-searchBtn.submit()
+# driver.execute_script("document.getElementById('startYmdInput').value = '20171001';")
+# searchBtn = driver.find_element_by_id('searchMain')
+# searchBtn.submit()
+
+driver = driverInit(None)
 
 # jsList = []
 # categories = []
@@ -87,9 +112,10 @@ try:
         if count >= 30:
             print("Reopen Chrome")
             count = 0
-            driver.close()
-            driver = webdriver.Chrome(dir)
-            driver.get('https://www.lost112.go.kr/find/findList.do')
+            driver = driverInit(driver)
+            # driver.close()
+            # driver = webdriver.Chrome(dir)
+            # driver.get('https://www.lost112.go.kr/find/findList.do')
         count += 1
 
         print("Page %d/%d" % (page, finish))
